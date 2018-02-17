@@ -16,3 +16,9 @@ reverseString("hello");
 
 #### Factorialize a Number
 
+function factorialize(num) {		
+	return (num == 1 || !num ? 1 : num * factorialize(num-1))
+}
+
+
+#### Something about palindromes
