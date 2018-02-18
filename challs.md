@@ -2,6 +2,7 @@
 
 
 #### Reverse a string (done without higher order functions)
+
 function reverseString(str) {
   let newStr = ''
   
@@ -14,11 +15,12 @@ function reverseString(str) {
 reverseString("hello");
 
 
-#### Factorialize a Number
+#### Factorialize a Number (done using the turnary style for if / else statement)
 
-function factorialize(num) {		
-	return (num == 1 || !num ? 1 : num * factorialize(num-1))
-}
+let factorialize = (num) => num == 1 || !num ? 1 : num * factorialize(num-1)
+
+factorialize(5);
+
 
 
 #### Check for palindromes
@@ -30,7 +32,7 @@ function palindrome(str) {
   
     return str === str2
 }
-palindrome("_eye")
+palindrome("eye")
 
 
 #### Find the Longest Word in a String
