@@ -1,5 +1,3 @@
-# ANKI
-
 ### Functions created in Algorithm section
 
 
@@ -23,7 +21,19 @@ function factorialize(num) {
 }
 
 
-#### Something about palindromes
+#### Check for palindromes
+function palindrome(str) {
+    let str2 = ''
+  
+    str = str.replace(/_|\W+/g, '').toLowerCase()
+    str2 = str.split('').reverse().join('')
+  
+    return str === str2
+}
+palindrome("_eye")
+
+
+#### Find the Longest Word in a String
 
 
 
