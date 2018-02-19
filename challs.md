@@ -36,7 +36,9 @@ palindrome("eye")
 
 
 #### Find the Longest Word in a String
-
+let findLongestWord = (str) => {
+    return Math.max.apply(null, str.split(' ').map(x => x.length));
+}
 
 
 #### No repeats please
