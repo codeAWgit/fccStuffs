@@ -40,6 +40,24 @@ let findLongestWord = (str) => {
     return Math.max.apply(null, str.split(' ').map(x => x.length));
 }
 
+#### Title Case a Sentence
+function titleCase(str) {
+  return  str.toLowerCase()
+              .split(' ')
+               .map(x => {
+                  x = x.split('')
+                  x[0] = x[0].toUpperCase()
+                  return x.join('')
+                })
+                .join(' ')
+}
+
+titleCase("I'm a little tea pot");
+
+
+#### Return Largest Number in Arrays
+
+
 
 #### No repeats please
 	YT_watch?v=B5lUyJDkWzE
