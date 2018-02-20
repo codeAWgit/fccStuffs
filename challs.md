@@ -2,30 +2,24 @@
 
 
 #### Reverse a string (done without higher order functions)
-
 let reverseString = (str) => {
   let newStr = ''
-  
   for(var i = str.length; i > 0; i--){
     newStr += str.charAt(i-1)
   }
-  
   return newStr
 }
 
 
 #### Factorialize a Number (done using the turnary style for if / else statement)
-
 let factorialize = (num) => num == 1 || !num ? 1 : num * factorialize(num-1)
 
 
 #### Check for palindromes
 let palindrome = (str) => {
     let str2 = ''
-  
     str = str.replace(/_|\W+/g, '').toLowerCase()
     str2 = str.split('').reverse().join('')
-  
     return str === str2
 }
 
@@ -53,6 +47,17 @@ let titleCase = (str) => {
 let largestOfFour = (arr) => {
     return arr.map(x => Math.max.apply(null, x))
     }
+
+
+#### Confirm the Ending
+let confirmEnding = (str, target) => {
+    let len = target.length
+    return target === str.substr(0-len,len)
+}
+
+
+#### Repeat a string repeat a string
+
 
 
 #### No repeats please
