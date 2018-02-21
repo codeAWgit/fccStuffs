@@ -67,7 +67,14 @@ let repeatStringNumTimes = (str, num) => {
 
 
 #### Truncate a string
+let truncateString = (str, num) => {
+    return (num <= 3) ? str.slice(0,num) + '...' :
+        (str.length <= num) ? str.slice(0,num) :
+            str.slice(0,num - 3) + '...'
+}
 
+
+#### Chunky Monkey
 
 
 
