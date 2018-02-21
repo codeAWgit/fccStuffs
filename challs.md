@@ -46,7 +46,7 @@ let titleCase = (str) => {
 #### Return Largest Number in Arrays
 let largestOfFour = (arr) => {
     return arr.map(x => Math.max.apply(null, x))
-    }
+}
 
 
 #### Confirm the Ending
@@ -57,6 +57,17 @@ let confirmEnding = (str, target) => {
 
 
 #### Repeat a string repeat a string
+let repeatStringNumTimes = (str, num) => {
+  let resStr = ''
+  while( 0 < num-- ) {
+      resStr += str
+  }
+  return resStr;
+}
+
+
+#### Truncate a string
+
 
 
 
