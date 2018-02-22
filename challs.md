@@ -75,6 +75,17 @@ let truncateString = (str, num) => {
 
 
 #### Chunky Monkey
+let chunkArrayInGroups = (arr, size) => {
+    let newRay = []
+    
+    while( arr.length ) { 
+        newRay.push(arr.splice(0,size))
+    }
+    return newRay
+}
+
+
+#### Slasher Flick
 
 
 
