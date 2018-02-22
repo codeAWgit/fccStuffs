@@ -3,11 +3,11 @@
 
 #### Reverse a string (done without higher order functions)
 let reverseString = (str) => {
-  let newStr = ''
-  for(var i = str.length; i > 0; i--){
-    newStr += str.charAt(i-1)
-  }
-  return newStr
+    let newStr = ''
+    for(var i = str.length; i > 0; i--){
+        newStr += str.charAt(i-1)
+    }
+    return newStr
 }
 
 
@@ -32,12 +32,12 @@ let findLongestWord = (str) => {
 
 #### Title Case a Sentence
 let titleCase = (str) => {
-  return  str.toLowerCase()
-              .split(' ')
+    return  str.toLowerCase()
+               .split(' ')
                .map(x => {
-                  x = x.split('')
-                  x[0] = x[0].toUpperCase()
-                  return x.join('')
+                    x = x.split('')
+                    x[0] = x[0].toUpperCase()
+                    return x.join('')
                 })
                 .join(' ')
 }
@@ -58,11 +58,11 @@ let confirmEnding = (str, target) => {
 
 #### Repeat a string repeat a string
 let repeatStringNumTimes = (str, num) => {
-  let resStr = ''
-  while( 0 < num-- ) {
-      resStr += str
-  }
-  return resStr;
+    let resStr = ''
+    while( 0 < num-- ) {
+        resStr += str
+    }
+    return resStr;
 }
 
 
@@ -70,7 +70,7 @@ let repeatStringNumTimes = (str, num) => {
 let truncateString = (str, num) => {
     return (num <= 3) ? str.slice(0,num) + '...' :
         (str.length <= num) ? str.slice(0,num) :
-            str.slice(0,num - 3) + '...'
+        str.slice(0,num - 3) + '...'
 }
 
 
