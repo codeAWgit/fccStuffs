@@ -11,7 +11,7 @@ let reverseString = (str) => {
 }
 
 
-#### Factorialize a Number (done using the turnary style for if / else statement)
+#### Factorialize a Number (done using the ternary style for if / else statement)
 let factorialize = (num) => num == 1 || !num ? 1 : num * factorialize(num-1)
 
 
