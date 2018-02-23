@@ -100,6 +100,12 @@ let mutation = (arr) => {
 
 
 #### Falsy Bouncer
+let bouncer = (arr) => {
+    return arr.filter( x => x )
+}
+
+
+#### Seek and Destroy
 
 
 
