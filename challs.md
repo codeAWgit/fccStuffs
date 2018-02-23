@@ -86,6 +86,21 @@ let chunkArrayInGroups = (arr, size) => {
 
 
 #### Slasher Flick
+let slasher = (arr, howMany) => {
+    return arr.slice(howMany);
+}
+
+
+#### Mutations
+let mutation = (arr) => {
+    arr[1].toLowerCase().split('').forEach( x => {
+        if (arr[0].toLowerCase().indexOf(x) === -1) arr[0] = ''
+    })
+    return Boolean(arr[0]);
+}
+
+
+#### Falsy Bouncer
 
 
 
