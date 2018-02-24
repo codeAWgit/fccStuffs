@@ -56,17 +56,14 @@ let confirmEnding = (str, target) => {
 }
 
 
-#### Repeat a string repeat a string
+#### Repeat a String Repeat a String
 let repeatStringNumTimes = (str, num) => {
-    let resStr = ''
-    while( 0 < num-- ) {
-        resStr += str
-    }
-    return resStr;
+    if(num < 1) num = 0
+    return str.repeat(num);
 }
 
 
-#### Truncate a string
+#### Truncate a String
 let truncateString = (str, num) => {
     return (num <= 3) ? str.slice(0,num) + '...' :
         (str.length <= num) ? str.slice(0,num) :
@@ -106,6 +103,17 @@ let bouncer = (arr) => {
 
 
 #### Seek and Destroy
+function destroyer(arr) {
+    let i = arguments.length;
+    while( i-- ){
+        arr = arr.filter(x => x !== arguments[i])
+    }
+    return arr;
+}
+
+
+#### Where Do I Belong?
+
 
 
 
