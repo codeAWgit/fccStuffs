@@ -17,7 +17,6 @@ let factorialize = (num) => num == 1 || !num ? 1 : num * factorialize(num-1)
 
 #### Check for palindromes
 let palindrome = (str) => {
-    let str2 = ''
     str = str.replace(/_|\W+/g, '').toLowerCase()
     str2 = str.split('').reverse().join('')
     return str === str2
