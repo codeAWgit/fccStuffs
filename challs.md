@@ -125,7 +125,13 @@ let getIndexToIns = (arr, num) => {
 
 
 #### Caesar's Cipher
-
+let rot13 = (str) => { // LBH QVQ VG!
+    let deCodeROT13 = m => {
+        return String.fromCharCode(m.charCodeAt() + 
+            (/[A-M]/.test(m) ? 13 : -13))
+    }
+    return str.replace(/\w/g, deCodeROT13)
+}
 
 
 #### No repeats please
