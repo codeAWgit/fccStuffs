@@ -14,6 +14,13 @@ let reverseString = (str) => {
 #### Factorialize a Number (done using the ternary style for if / else statement)
 let factorialize = (num) => num == 1 || !num ? 1 : num * factorialize(num-1)
 
+##### or for tail call optimization
+let factorialize = (num, acc = 1 ) {
+    if (num < 2 ) return acc
+
+    return factorialize(num - 1, num * acc)
+}
+
 
 #### Check for palindromes
 let palindrome = (str) => {
@@ -71,10 +78,9 @@ let truncateString = (str, num) => {
 
 
 #### Chunky Monkey
-let chunkArrayInGroups = (arr, size) => {
-    let newRay = []
+let chunkArrayInGroups = ( arr, size, newRay = [] ) => {
     while( arr.length ) { 
-        newRay.push(arr.splice(0,size))
+        newRay.push( arr.splice( 0,size ))
     }
     return newRay
 }
