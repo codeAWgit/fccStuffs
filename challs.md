@@ -11,13 +11,28 @@ let reverseString = (str) => {
 }
 
 
-#### Factorialize a Number (done using the ternary style for if / else statement)
+#### Factorialize a Number 
+##### First way I learned to make this function.
+function factorialize(num) {
+    let result = 1
+	for (let i = 1; i <= num ; i++){
+		result *= i;
+	}
+	return result;
+} 
+##### Second way I learned to make this function.
+function factorialize(num) {		 
+	if (num == 1 || !num){
+      return 1}
+	return num * factorialize(num-1)
+}
+
+##### (done using the ternary style for if / else statement)
 let factorialize = (num) => num == 1 || !num ? 1 : num * factorialize(num-1)
 
 ##### or for tail call optimization
 let factorialize = (num, acc = 1 ) {
     if (num < 2 ) return acc
-
     return factorialize(num - 1, num * acc)
 }
 
