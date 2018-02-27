@@ -149,5 +149,16 @@ let rot13 = (str) => { // LBH QVQ VG!
 }
 
 
+#### Sum All Numbers in a Range
+let sumAll = (arr, rslt = 0) => {
+        arr.sort( (a,b) => a - b)
+        do{
+            rslt += arr[0]  
+        } while (arr[1] > arr[0]++)
+    return rslt
+}
+
+
+
 #### No repeats please
 	YT_watch?v=B5lUyJDkWzE
