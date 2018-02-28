@@ -159,15 +159,14 @@ let sumAll = (arr, rslt = 0) => {
 }
 
 
-#### Difference in Two Arrays?
+#### Diff Two Arrays
 function diffArray(arr1, arr2) {
-    return arr1.concat(arr2)
-               .filter( x => arr1.indexOf(x) == -1 || 
-                      arr2.indexOf(x) === -1 ? true : false)
+    return [...arr1,...arr2]
+        .filter( x => arr1.indexOf(x) == -1 || arr2.indexOf(x) == -1)
 }
 
 
-#### Check title for previous algo.
+#### Roman Numeral Converter
 
 
 
