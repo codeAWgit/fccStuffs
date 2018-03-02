@@ -188,8 +188,23 @@ function convertToRoman(num) {
 }
 
 
-#### 
+#### Wherefore Art Thou
+function whatIsInAName(collection, source) {
+    var arr = [];
+    for ( let element of collection) {
+        let inElement = true
+        for ( let prop in source) {
+            if ( !(prop in element) || source[prop] !== element[prop] && inElement) {
+                inElement = false
+            }
+        }
+        if (inElement) arr.push(element)
+    }
+    return arr;
+}
 
+
+#### 
 
 #### No repeats please
 	YT_watch?v=B5lUyJDkWzE
