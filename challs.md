@@ -204,7 +204,21 @@ function whatIsInAName(collection, source) {
 }
 
 
-#### 
+#### Search and Replace
+function myReplace(str, before, after) {
+    return str.replace(before, preverveCase())
+
+    function preverveCase() {
+        if ( before.charCodeAt(0) < 91 ) {
+            return after.charAt(0).toUpperCase() + after.slice(1)
+        }
+        return after
+    }
+}
+
+
+#### Pig Latin
+
 
 #### No repeats please
 	YT_watch?v=B5lUyJDkWzE
