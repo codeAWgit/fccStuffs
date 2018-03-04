@@ -218,6 +218,16 @@ function myReplace(str, before, after) {
 
 
 #### Pig Latin
+function translatePigLatin(str) {
+    str = str.replace(/(\b[aeiou]\w+)/, '$1way')
+    return str.replace(/(\b[^aeiou]+)(\w+)/, '$2$1ay')
+}
+
+
+#### 
+
+
+
 
 
 #### No repeats please
