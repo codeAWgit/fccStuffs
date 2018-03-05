@@ -224,10 +224,18 @@ function translatePigLatin(str) {
 }
 
 
+#### DNA Pairing
+function pairElement(str) {
+    return str.split('').map( x => {
+        return ( x == 'G') ? ['G','C'] :
+            ( x == 'C') ? ['C','G'] : 
+            ( x == 'A') ? ['A','T'] :
+            ( x == 'T') ? ['T','A'] : "Not a DNA character" 
+    })
+}
+
+
 #### 
-
-
-
 
 
 #### No repeats please
