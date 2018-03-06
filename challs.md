@@ -235,7 +235,21 @@ function pairElement(str) {
 }
 
 
-#### 
+#### Missing Letters
+function fearNotLetter(str) {
+    let len = str.length, i = 1
+    for ( ; i < len; i++) {
+        if ( str.charCodeAt( i - 1 ) !== ( str.charCodeAt( i ) - 1 )) {
+          return String.fromCharCode(str.charCodeAt( i ) - 1 )
+        }
+    }
+    return undefined
+}
+
+
+####
+
+
 
 
 #### No repeats please
