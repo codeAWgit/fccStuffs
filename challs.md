@@ -247,8 +247,24 @@ function fearNotLetter(str) {
 }
 
 
-####
+#### Boo Who
+function booWho(bool) {
+  return bool === true || bool === false;
+}
 
+
+#### Sorted Union
+function uniteUnique(arr) {
+    let tmpArr  
+    [arr, ...tmpArr] = arguments
+    tmpArr.forEach( x => {
+        arr = arr.concat(x.filter( y => !(arr.includes(y))))
+    })
+    return arr
+}
+
+
+#### 
 
 
 
