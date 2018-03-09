@@ -264,8 +264,17 @@ function uniteUnique(arr) {
 }
 
 
-#### 
+#### Convert HTML Entities
+function convertHTML(str) {
+  str = str.replace(/&/g, "&amp;")
+  str = str.replace(/"/g, "&quot;")
+  str = str.replace(/'/g, "&apos;")
+  str = str.replace(/</g, "&lt;")
+  return str.replace(/>/g, "&gt;")
+}
 
+
+#### 
 
 
 #### No repeats please
