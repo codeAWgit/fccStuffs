@@ -280,10 +280,19 @@ function spinalCase(str) {
 }
 
 
+#### Sum All Odd Fibonacci Numbers
+function sumFibs(num) {
+    let o = 1, o2 = 1, next = 2, sum = 2;
+    while ( next <= num ) {
+        o2 = o; o = next;
+        next = o + o2
+        sum += o % 2 && o
+    }
+    return sum;
+}
+
+
 #### 
-
-
-
 
 
 #### No repeats please
