@@ -274,7 +274,16 @@ function convertHTML(str) {
 }
 
 
+#### Spinal Tap Case
+function spinalCase(str) {
+    return str.replace(/(\S)\s+(\S)|([a-z]+)_?([A-Z]{1})/g, '$1$3-$2$4').toLowerCase();
+}
+
+
 #### 
+
+
+
 
 
 #### No repeats please
