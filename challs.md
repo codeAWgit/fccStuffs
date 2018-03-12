@@ -292,7 +292,44 @@ function sumFibs(num) {
 }
 
 
-#### 
+#### Smallest Common Multiple
+function smallestCommons(arr) {    Shorter code.
+    arr.sort((a,b) => a - b )
+    let potentialSCM = arr[1], loopCount = 1
+
+    while (true) {
+        let remainder = 0
+        for (let i = arr[0]; i <= arr[1]; i++) {
+            remainder += ( potentialSCM % i )
+        }
+      
+        if (!remainder) return potentialSCM;
+      
+        loopCount++
+        potentialSCM = loopCount * arr[1]
+    }
+}
+
+function smallestCommons(arr) {   Likely faster code.
+    arr.sort((a,b) => a - b )
+    let potentialSCM = arr[1], loopCount = 1, fullArr = []
+    
+    for (let i = arr[0]; i <= arr[1]; i++) {
+        fullArr.push(i)
+    }
+
+    while (true) {
+        let remainder = 0
+        fullArr.forEach( x => {
+            remainder += potentialSCM % x
+        })
+
+        if (!remainder) return potentialSCM;
+      
+        loopCount++
+        potentialSCM = loopCount * arr[1]
+    }
+}
 
 
 #### No repeats please
