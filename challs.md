@@ -292,19 +292,30 @@ function sumFibs(num) {
 }
 
 
+#### Sum All Primes
+function sumPrimes(num) {
+    let sum = 0
+    for ( let i = 2; i <= num; i++) {
+        let quot = 0
+        for (let k = 1; k <= i; k++) {
+            if ( i % k === 0 ) quot += k
+        }
+        if ( i + 1 === quot ) sum += i
+    }
+    return sum
+}
+
+
 #### Smallest Common Multiple
 function smallestCommons(arr) {    Shorter code.
     arr.sort((a,b) => a - b )
     let potentialSCM = arr[1], loopCount = 1
-
     while (true) {
         let remainder = 0
         for (let i = arr[0]; i <= arr[1]; i++) {
             remainder += ( potentialSCM % i )
         }
-      
         if (!remainder) return potentialSCM;
-      
         loopCount++
         potentialSCM = loopCount * arr[1]
     }
@@ -312,20 +323,16 @@ function smallestCommons(arr) {    Shorter code.
 
 function smallestCommons(arr) {   Likely faster code.
     arr.sort((a,b) => a - b )
-    let potentialSCM = arr[1], loopCount = 1, fullArr = []
-    
+    let potentialSCM = arr[1], loopCount = 1, fullArr = [] 
     for (let i = arr[0]; i <= arr[1]; i++) {
         fullArr.push(i)
     }
-
     while (true) {
         let remainder = 0
         fullArr.forEach( x => {
             remainder += potentialSCM % x
         })
-
         if (!remainder) return potentialSCM;
-      
         loopCount++
         potentialSCM = loopCount * arr[1]
     }
