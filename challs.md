@@ -339,5 +339,14 @@ function smallestCommons(arr) {   Likely faster code.
 }
 
 
+#### Finders Keepers
+function findElement(arr, func) {
+    return arr.find(func);
+}
+
+
+#### 
+
+
 #### No repeats please
 	YT_watch?v=B5lUyJDkWzE
