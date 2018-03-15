@@ -345,6 +345,15 @@ function findElement(arr, func) {
 }
 
 
+#### Drop It
+function dropElements(arr, func) {
+    let sliceFrom = arr.reduce( (rslt, cur, i) => {
+        return rslt === arr.length && func(cur) ? i : rslt
+    }, arr.length)
+    return arr.slice(sliceFrom);
+}
+
+
 #### 
 
 
