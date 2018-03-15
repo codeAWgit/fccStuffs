@@ -357,5 +357,11 @@ function dropElements(arr, func) {
 #### 
 
 
+#### Binary Agents
+function binaryAgent(str) {
+    return str.split(' ').map( x => String.fromCharCode( parseInt( x, 2 )) ).join('')
+}
+
+
 #### No repeats please
 	YT_watch?v=B5lUyJDkWzE
