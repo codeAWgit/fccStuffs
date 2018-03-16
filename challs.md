@@ -354,7 +354,18 @@ function dropElements(arr, func) {
 }
 
 
-#### 
+#### Steamroller
+function steamrollArray(arr) {
+    let rsltArr = []
+    arr.forEach( x => {
+        ( Array.isArray( x ) ) ? (
+            steamrollArray( x ).forEach( y => rsltArr.push( y ) )
+        ) : (
+            rsltArr.push( x )
+        )
+    })
+    return rsltArr
+}
 
 
 #### Binary Agents
