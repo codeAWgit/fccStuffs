@@ -374,5 +374,28 @@ function binaryAgent(str) {
 }
 
 
+#### Everything Be True
+function truthCheck(collection, pre) {
+    return collection.every( x => Boolean(x[pre]));
+}
+
+
+#### Arguments Optional
+function addTogether() { 
+    let sum = 0
+    for ( let i =0; i < arguments.length; i++) {
+        typeof arguments[i] !== 'number' ? sum = undefined : sum += arguments[i]
+    }
+    if ( arguments.length > 1 || sum === undefined ) {
+        return sum
+    }
+    else {   
+        return function needNum( secondNum ) {
+            return ( typeof secondNum !== 'number' ) ? undefined : sum + secondNum
+        }
+    }        
+}
+
+
 #### No repeats please
 	YT_watch?v=B5lUyJDkWzE
