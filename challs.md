@@ -592,6 +592,15 @@ function updateInventory(arr1, arr2) {
     return arr1.sort( (a, b) => a[1] < b[1] ? -1 : 1 )
 }
 
+#### Newer Still
+function updateInventory(arr1, arr2) {
+    arr2.forEach( e => {
+        var i = arr1.findIndex( x => x[1] === e[1] );
+        i === -1 ? arr1.push( e ) : arr1[ i ][0] += e[0];
+    })
+    return arr1.sort( (a, b) => a[1] < b[1] ? -1 : 1 )
+}
+
 
 #### No repeats please
 ##### Old
