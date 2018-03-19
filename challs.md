@@ -405,7 +405,40 @@ function telephoneCheck(str) {
 
 
 #### Record Collection
+##### Old
+function updateRecords(id, prop, value) {
+  if (prop != 'tracks' && value != ''){
+    collection[id][prop] = value;
+  }
+  else if (prop != 'tracks' && value == ''){
+    delete collection[id][prop];
+  }
+  if (prop == 'tracks' && value == ''){
+    delete collection[id][prop];
+  }
+  else if (prop == 'tracks' && !collection[id].hasOwnProperty(prop)){
+    var tempA = [];
+    tempA.push(value);
+    collection[id][prop] = tempA;
+  }
+  else if (prop == 'tracks' && collection[id].hasOwnProperty(prop)){
+    collection[id][prop].push(value);
+  }
+  return collection;
+}
 
+##### New
+function updateRecords(id, prop, value) {
+    if ( prop != 'tracks' ) collection[id][prop] = value
+    if ( prop == 'tracks' && prop in collection[id] ) {
+        collection[id][prop].push( value )
+    }  
+    if ( prop == 'tracks' && !(prop in collection[id]) ) {
+        collection[id][prop] = [ value ]
+    }
+    if ( !value ) delete collection[id][prop]
+    return collection;
+}
 
 
 #### Symmetric Difference
@@ -560,6 +593,92 @@ function updateInventory(arr1, arr2) {
 }
 
 
+#### No repeats please
+##### Old
+
+
+##### New
+	YT_watch?v=B5lUyJDkWzE
+
+
+#### Make a Person
+##### Old
+var Person = function(firstAndLast) {
+    // Complete the method below and implement the others similarly
+  this.setFirstName = function(first){
+    if(!this.fullName){
+           this.fullName = firstAndLast;
+    }     
+    this.fullName = this.fullName.replace(/\w+/, first);  //To replace first name.
+  };
+
+  this.setLastName = function(last){
+    if(!this.fullName){
+           this.fullName = firstAndLast;
+    }     
+    this.fullName = this.fullName.replace(/(\w+\s+)(\w+)/, '$1' + last);  //Replace last name.
+  };
+
+  this.setFullName = function(firstAndLast2){
+    this.fullName = firstAndLast2;
+  };
+  
+  this.getFirstName = function() {
+    if(!this.fullName){
+           this.fullName = firstAndLast;
+    }
+      return this.fullName.replace(/(\w+)(\s+\w+)/, '$1');
+    };
+
+  this.getLastName = function() {
+    if(!this.fullName){
+           this.fullName = firstAndLast;
+    }    
+      return this.fullName.replace(/(\w+\s+)(\w+)/, '$2');
+    };
+  
+  this.getFullName = function() {   
+      return this.fullName;
+    };  
+};
+
+##### New
+var Person = function(firstAndLast) {
+    this.getFullName = function() {
+      return firstAndLast;
+    };
+    this.getFirstName = function() {
+      return firstAndLast.split(' ')[0];
+    };
+    this.getLastName = function() {
+      return firstAndLast.split(' ')[1];
+    };
+    this.setFullName = function(newFull) {
+      firstAndLast = newFull; 
+    };
+    this.setFirstName = function(newFirst) {
+      firstAndLast = `${newFirst} ${this.getLastName()}`;
+    };
+    this.setLastName = function(newLast) {
+      firstAndLast = `${this.getFirstName()} ${newLast}`;
+    };
+};
+
+
+#### Map the Debris
+function orbitalPeriod(arr) {
+    var GM = 398600.4418;
+    var earthRadius = 6367.4447;
+    arr = arr.map( function (x) {
+      x.orbitalPeriod = Math.round( 2 * Math.PI * Math.sqrt( Math.pow(
+                          x.avgAlt + earthRadius, 3 ) / GM ));
+      delete x.avgAlt;
+      return x;
+    });
+    return arr;
+}
+
+
 #### Pairwise
 ##### Old
 function pairwise(arr, arg) {
@@ -592,7 +711,3 @@ function pairwise(arr, arg, total = 0) {
     }
     return total
 }
-
-
-#### No repeats please
-	YT_watch?v=B5lUyJDkWzE
