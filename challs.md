@@ -397,5 +397,202 @@ function addTogether() {
 }
 
 
+#### Validate US Telephone Numbers
+function telephoneCheck(str) {
+    let tF = /^1?\s?\d{3}-?\s?\d{3}-?\s?\d{4}$/.test(str);
+    return tF || /^1?\s?[(]\d{3}[)]-?\s?\d{3}-?\s?\d{4}$/.test(str);
+}
+
+
+#### Record Collection
+
+
+
+#### Symmetric Difference
+##### Old
+function sym(args) {
+  function flatten(arr){
+  var cont = [];
+    for (var i=0; i < arr.length; i++){
+      if(cont.indexOf(arr[i]) == -1){
+        cont.push(arr[i]);
+      }
+  }  return cont;
+  }
+  var sdContainer = flatten(args);   
+  var delValue;
+  function isDuplicate(value) {
+    return value != delValue;
+  }
+  for (var k=1; k < arguments.length; k++){
+    var tempCont = sdContainer.concat(flatten(arguments[k]));
+    sdContainer = []; 
+    for (var m=0; m < tempCont.length; m++){
+      if(sdContainer.indexOf(tempCont[m]) == -1){
+        sdContainer.push(tempCont[m]);
+      }
+      else
+      {
+        delValue = tempCont[m];
+        sdContainer = sdContainer.filter(isDuplicate);
+      }
+    }
+  }
+return sdContainer.sort();
+}
+
+##### New
+function sym(args) {
+    for ( var i=1; i < arguments.length; i++) {
+        let otherArg = [...arguments[i]], tmpArg = []
+        args.forEach( x => {
+            if ( !otherArg.includes(x) && !tmpArg.includes(x) ) tmpArg.push(x)
+        })
+        otherArg.forEach( x => {
+            if ( !args.includes(x) && !tmpArg.includes(x) ) tmpArg.push(x)
+        })
+        args = tmpArg
+    }
+    return args;
+}
+
+
+#### Exact Change
+##### Old
+function checkCashRegister(price, cash, cid) {
+  var change = [], drawerTotal = 0;
+  var amntToReturn = cash * 100 - price * 100;
+  var billValue = [10000,2000,1000,500,100,25,10,5,1];  // In Pennies.
+  for (var i=0; i < billValue.length; i++) {
+      var numOfBillsNeeded = Math.floor(amntToReturn / billValue[i]);
+      var numOfBillsInDrawer = (cid[8-i][1] * 100) / billValue[i];
+      var forChangeContainer = [];
+      if (numOfBillsInDrawer == 0 || numOfBillsNeeded == 0) {
+      }
+      else if (numOfBillsInDrawer <= numOfBillsNeeded){
+        forChangeContainer.push(cid[8-i][0]);
+        forChangeContainer.push((numOfBillsInDrawer * billValue[i]) /100);
+        change.push(forChangeContainer);
+        amntToReturn -= numOfBillsInDrawer * billValue[i];
+        cid[8-i][1] = 0;
+      }
+      else {
+        forChangeContainer.push(cid[8-i][0]);
+        forChangeContainer.push((numOfBillsNeeded * billValue[i]) /100);
+        change.push(forChangeContainer);
+        amntToReturn -= numOfBillsNeeded * billValue[i];
+        cid[8-i][1] -= (numOfBillsNeeded * billValue[i]) / 100;
+      }
+    
+      drawerTotal += cid[8-i][1] * 100;
+    }
+  if (amntToReturn > 0){
+    return "Insufficient Funds";
+  }
+  if (drawerTotal == 0){
+    return "Closed";
+  }  
+  return change;
+}
+
+##### New
+function checkCashRegister(price, cash, cid) {
+  var change = cash * 100 - price * 100;
+  var centAmnts = [1,5,10,25,100,500,1000,2000,10000]
+  var changeArr = [], cidTotal = 0
+  for ( var i = cid.length - 1; i >= 0; i-- ) {
+      let potential = Math.floor( change / centAmnts[i] )
+      let reality = Math.floor( cid[i][1] * 100 / centAmnts[i] )
+      if ( reality < potential ) {
+          changeArr.push( cid[i] )
+          change -= cid[i][1] * 100
+      }
+      else {
+          changeArr.push( [cid[i][0], potential * centAmnts[i] / 100] )
+          change -= potential * centAmnts[i]
+          cidTotal = cid[i][1] * 100 - potential * centAmnts[i]
+      }
+  }
+  return ( change > 0 ) ? "Insufficient Funds" : 
+         ( !cidTotal ) ? "Closed" :
+         changeArr.filter( e => e[1] )
+}
+
+
+#### Inventory Update
+##### Old
+function updateInventory(arr1, arr2) {
+  var alphArr = [];
+  var bothArr = arr1.concat(arr2);  //This puts both the inventories into one array.
+  var finalArr = [];          //finalArr is the updated inventory from two previous.
+  for (var i=0; i < bothArr.length; i++){    
+    if (alphArr.indexOf(bothArr[i][1]) == -1){
+        alphArr.push(bothArr[i][1]);
+  }
+  }  
+  alphArr.sort();       //All unique inventory item names put in alphabetical order.
+  for (var m=0; m< alphArr.length; m++){
+    var itemTotal = 0;
+    var loopArr = [];    
+    for (var n=0; n< bothArr.length; n++){
+      if (alphArr[m] == bothArr[n][1]){
+        itemTotal += bothArr[n][0];
+        }
+      }
+    loopArr.push(itemTotal);
+    loopArr.push(alphArr[m]);
+    finalArr.push(loopArr);
+  }
+  return finalArr;
+}
+
+##### New
+function updateInventory(arr1, arr2) {
+    let arr1Names = []
+    arr1.forEach( e => arr1Names.push( e[1] ))
+    arr2.forEach( e => {
+        if ( !arr1Names.includes( e[1] ) ) arr1.push( e )
+        else {
+            arr1[ arr1Names.indexOf( e[1] ) ][0] += e[0]
+        }
+    })
+    return arr1.sort( (a, b) => a[1] < b[1] ? -1 : 1 )
+}
+
+
+#### Pairwise
+##### Old
+function pairwise(arr, arg) {
+  arr = arr.reduce(function(accOrI, curr, index, array){
+    
+    array.find(function(x, index2){
+      if(arg - curr == x && accOrI.indexOf(index) == -1 && accOrI.indexOf(index2) == -1 && index != index2){
+        accOrI.push(index2);
+        accOrI.push(index);
+      }
+    });
+    return accOrI;
+  }
+  return arr.reduce(function(sum, curVal){
+    return sum + curVal;
+  }, 0);
+}, []);
+  
+  
+
+##### New
+function pairwise(arr, arg, total = 0) {
+    for ( let k=0; k < arr.length; k++) {
+        for ( let i = k+1; i < arr.length; i++) {
+            if ( arr[k] + arr[i] === arg) {
+                total += k + i
+                arr[k] = undefined; arr[i] = undefined
+            }
+        }
+    }
+    return total
+}
+
+
 #### No repeats please
 	YT_watch?v=B5lUyJDkWzE
